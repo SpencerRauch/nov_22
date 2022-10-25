@@ -1,0 +1,57 @@
+#OOP?
+#Object Orientated Programming
+# creating objects in our code using classes, attributes and methods
+#grouping data and functionality together into one single entity, called an Object
+
+dog_1 = {
+    "name": "Spot",
+    "age": 3,
+    "breed": "Corgi"
+}
+
+dog_2 = {
+    "name": "Mr Worldwide",
+    "age": 34,
+    "breed": "pitbull"
+}
+
+
+
+
+
+#What is a class?
+#Blue print
+class Dog:
+    def __init__(self, data):
+        self.name = data['name']
+        self.age = data['age']
+        self.breed = data['breed']
+
+    def bark(self):
+        print(f"{self.name} makes a loud bark")
+        return self
+
+    def birthday(self):
+        self.age += 1
+        print(f"{self.name} gets a special bday treat! They are now {self.age} year(s) old")
+        return self
+
+    def __repr__(self):
+        return f"{self.name} is a dog object {self.age} {self.breed}"
+
+# dog_3 = Dog("Minnie", 4, "corgi")
+# dog_4 = Dog("Max",4,"Great Dane")
+dog_3 = Dog(dog_1)
+dog_4 = Dog(dog_2)
+
+print(dog_3)
+# print(dog_3.name)
+# print(dog_4.name)
+
+#What is an attribute?
+# a characteristic of our object, some piece of data we are tracking about our object
+# ie breed, age, color for a dog
+
+#What is a method?
+# a function belonging to the class -- what our objects can do
+dog_3.bark().bark().bark().birthday().bark()
