@@ -24,7 +24,11 @@ const expected4 = "";
  * @returns {string} The given str reversed.
  */
 function reverseString(str) {
-    //Your code here
+    let newStr = ""
+    for (let i= 0; i < str.length; i++){
+        newStr = str[i] + newStr
+    }
+    return newStr
 }
 
 //TEST CODE FOR REVERSE
@@ -32,4 +36,13 @@ console.log(reverseString(str1)) // Expected: erutaerc
 console.log(reverseString(str2)) // Expected: god
 console.log(reverseString(str3)) // Expected: olleh
 console.log(reverseString(str4)) // Expected: ""
+
+function reverseString(str) {
+  newstring = ""
+  for (var i = 0; i < str.length; i++) {
+      temp = str[str.length - 1 - i] 
+      newstring += temp
+  }
+  return newstring
+}
 
