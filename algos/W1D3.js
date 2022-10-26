@@ -80,3 +80,80 @@ console.log(acronymize(str1)); // Expected: "OOP"
 console.log(acronymize(str2)); // Expected: "APIE"
 console.log(acronymize(str3)); // Expected: "SDLC"
 console.log(acronymize(str4)); // Expected: "GIT"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function join(arr, separator) {
+  //Your code here
+  let joined = "";
+  for (let i = 0; i < arr.length; i++) {
+      joined += arr[i];
+      if (i < arr.length - 1) {
+          joined += separator;
+      }
+  }
+  return joined;
+}
+
+function acronymize(str) {
+  let acronym = "";
+  let words = str.split(" ");
+  for (let i = 0; i < words.length; i++) {
+      if (words[i] !== "") {
+          acronym += words[i][0].toUpperCase();
+      }
+  }
+  return acronym;
+}
+
+function acronymize2(str) {
+  let acronym = "";
+  let currentWord = "";
+  for (let i = 0; i < str.length; i++) {
+      if (str[i] !== " ") {
+          currentWord += str[i];
+      } else if (currentWord.length > 0) {
+          acronym += currentWord[0];
+          currentWord = "";
+      }
+  }
+  if (currentWord.length > 0) {
+      acronym += currentWord[0];
+  }
+  return acronym.toUpperCase();
+}
+
+//credit Jason Yang
+function acronymize(str) {
+  //Your code here
+  var result = "";
+  var space = true;
+
+  for (var i = 0; i < str.length; i++){
+      if (space && str[i] != " "){
+          space = false;
+          result += str[i];
+      } else if (str[i] == " ") {
+          space = true;
+      }
+  }
+  return result.toUpperCase();
+}
