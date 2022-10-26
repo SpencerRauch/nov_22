@@ -157,3 +157,17 @@ function acronymize(str) {
   }
   return result.toUpperCase();
 }
+//credit Marcus Seaman
+function join(arr, separator) {
+    //Your code here
+    var newArr = "";
+    for(var x=0; x < arr.length; x++) 
+        if(newArr.length>0){
+            newArr += separator;
+            newArr += arr[x]
+        }
+        else{
+            newArr += arr[x] 
+        }
+        return newArr
+}
