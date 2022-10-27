@@ -9,9 +9,9 @@
   return the original string.
   */
 
-const str1 = "aaaabbcddd";
-const expected1 = "a4b2cd3";
-const expected1b = "a4bbcd3";
+const str1 = "aaaabbcdddaaa";
+const expected1 = "a4b2cd3a3";
+const expected1b = "a4bbcd3a3";
 
 const str2 = "";
 const expected2 = "";
@@ -43,7 +43,7 @@ function encodeStr(str) {
 console.log(encodeStr(str1)) // Expected: a4bbcd3
 console.log(encodeStr(str2)) // Expected: ""
 console.log(encodeStr(str3)) // Expected: a
-console.log(encodeStr(str4)) // Expected: bbcc
+console.log(encodeStr(str4)) // Expected: ccbb
 console.log(encodeStr(str5)) // Expected: ab17
 
 const strA = "a3b2c1d3";
@@ -69,3 +69,107 @@ function decodeStr(str) {
 console.log(decodeStr(strA)) // Expected: aaabbcddd
 console.log(decodeStr(strB)) // Expected: aaabbccccccccccccdddddddddd
 
+
+function encodeStr(str) {
+  //Your code here
+  if (str == ""){
+      return str;
+  }
+  var change = false;
+  count = 0;
+  var temp = str[0];
+  var result = "";
+  for (var i = 0; i < str.length; i++){
+      if (str[i] != temp){
+          change = true;
+          // add letter+number
+          if (count < 3){
+              result += temp.repeat(count);
+          } else {
+              result = result + temp + count; 
+          }
+          temp = str[i];
+      } else {
+          change = false;
+          count ++;
+      }
+      if (change) {
+          count = 1;
+          change = false;
+      }
+  }
+  if (count < 3){
+      result += temp.repeat(count);
+  } else {
+      result = result + temp + count; 
+  }
+  return result;
+}
+
+function encodeStr(str) {
+  var newStr = ""
+  var counter = 1
+  for (var i =0; i < str.length;i++) {
+      if (str[i]==str[i+1]){
+          counter++
+      } else {
+          if (counter <= 1){
+              newStr += str[i]
+          } else {
+              newStr+=(str[i]+counter)
+          }
+          counter=1
+      }
+  }
+  if (newStr.length >= str.length){
+      return str
+  }
+  return newStr
+}
+
+
+
+function encodeStr(str) {
+  let encoded = "";
+
+  for (let i = 0; i < str.length; i++) {
+    let currChar = str[i];
+    let dupeCount = 1;
+
+    while (str[i + 1] === currChar) {
+      dupeCount++;
+      i++;
+    }
+
+    if (dupeCount === 1) {
+      encoded += currChar
+    }
+    else {
+      encoded += currChar + dupeCount;
+    }
+  }
+  return encoded.length < str.length ? encoded : str;
+}
+
+
+function encodeStr2(str) {
+  new_str = "";
+  current_count = 1;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == str[i + 1]) {
+      current_count++;
+    }
+    else {
+      new_str += str[i] + (current_count > 1 ? current_count : "");
+      current_count = 1;
+    }
+  }
+
+  if (new_str.length < str.length) {
+    return new_str;
+  }
+  else {
+    return str;
+  }
+}
