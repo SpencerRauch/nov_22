@@ -7,16 +7,27 @@ app = Flask(__name__)    # Create a new instance of the Flask class called "app"
 def hello_world():
     return '<h1>Hello World!</h1>'  # Return the string 'Hello World!' as a response
 
-@app.route('/say/<word>/<int:times>')
-def say_word(word, times):
-    phrase = ""
-    for i in range(times):
-        phrase += word + " "
-    return phrase
+@app.route('/say/<word_path_var>/<int:times>')
+def say_word(word_path_var, times):
+    # phrase = ""
+    # for i in range(times):
+    #     phrase += word + " "
+    # return phrase
+    return render_template("say_times.html",word=word_path_var,times=times,color="blue")
+
+@app.route("/list")
+def list():
+    student_info = [
+       {'name' : 'Michael', 'age' : 35},
+       {'name' : 'John', 'age' : 30 },
+       {'name' : 'Mark', 'age' : 25},
+       {'name' : 'KB', 'age' : 27}
+    ]
+    return render_template("list.html",list=student_info)
 
 @app.route('/template')
 def template():
-    return render_template("index.html")
+    return render_template("index.html", num = 7)
 
 
 if __name__=="__main__":   # Ensure this file is being run directly and not from a different module    

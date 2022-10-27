@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+</head>
+<body>
+    {{list|length}}
+    {% for dict in list %}
+    <p>Name: {{dict.name}} Age {{dict['age']}}</p>
+    {% if dict.name == 'John'%}
+    <img src="{{ url_for('static', filename='cake.jpg') }}">
+    {%endif%}
+    {% endfor %}
+    <script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
