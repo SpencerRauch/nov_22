@@ -69,3 +69,68 @@ function zipArraysIntoMap(keys, values) {
 console.log(zipArraysIntoMap(keys1, vals1)) // expected: { flavor: 'chocolate', size: 10, is_delicious: true } (order may vary)
 console.log(zipArraysIntoMap(keys2, vals2)) // expected: {} 
 console.log(zipArraysIntoMap(keys3, vals3)) // expected: { name: 'Gyarados', number: 130, type: 'water/flying', evolves_from: 'Magikarp' } (order may vary)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function isPalindrome(str) {
+    //empty string
+    nstring = ''
+    // loop through the string
+    for(var i = str.length-1; i >= 0; i--){
+        nstring += str[i]
+    }
+    // nstring and str should be equal if they are 
+    if(nstring === str){
+        return true
+    }
+    else{
+        return false
+    }
+}
+
+
+function isPalindrome(str) {
+    for (var i = 0; i<str.length/2; i++){
+        x = str.length - 1 - i 
+        if(str[i]!= str[x]){
+            return false
+        }   
+    }
+    return true
+}
+
+
+function isPalindrome(str) { 
+    if (str.length < 2) return true;
+    let start = 0;
+    let end = str.length - 1;
+    while (start < end) {
+        if (str[start] !== str[end]) return false;
+        start++;
+        end--;
+    }
+    return true;
+}
+
+
+
+function zipArraysIntoMap(keys, values) {
+    if (keys.length !== values.length) return false
+    let map = {}
+    for (let i = 0; i < keys.length; i++) {
+        map[keys[i]] = values[i]
+    }
+    return map
+}
