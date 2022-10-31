@@ -98,3 +98,13 @@ function oddOccurrencesInArray(nums) {
   return false;
 }
 
+function oddOccurrencesInArray(nums) {
+  var myObj = makeFrequencyTable(nums);
+  // console.log(myObj);
+  var keys = Object.keys(myObj);
+  for (var i = 0; i < keys.length; i++){
+      if (myObj[keys[i]] % 2 == 1){
+          return keys[i];
+      }
+  }
+}
