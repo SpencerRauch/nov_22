@@ -8,12 +8,12 @@ const expected1 = {
   a: 3,
 };
 
-const arr2 = ["a", "b", "a", "c", "B", "c", "c", "d"];
+const arr2 = ["a", "b", "a", "c", "Bob", "c", "c", "d"];
 const expected2 = {
   a: 2,
   b: 1,
   c: 3,
-  B: 1,
+  Bob: 1,
   d: 1,
 };
 
@@ -67,3 +67,34 @@ console.log(oddOccurrencesInArray(numsA), "should equal", expectedA);
 console.log(oddOccurrencesInArray(numsB), "should equal", expectedB);
 console.log(oddOccurrencesInArray(numsC), "should equal", expectedC);
 console.log(oddOccurrencesInArray(numsD), "should equal", expectedD);
+
+
+
+function makeFrequencyTable(arr) {
+  let freq = {};
+  for (let elem of arr){
+      freq.hasOwnProperty(elem) ? freq[elem]++ : freq[elem] = 1;
+      //  condition             ?  if true     :    if false
+      /*
+      if (freq.hasOwnProperty(elem)){
+          freq[elem]++
+      } else {
+          freq[elem] = 1
+      }
+      */
+  }
+  return freq;
+}
+
+
+function oddOccurrencesInArray(nums) {
+  //Your code here
+  let freq = makeFrequencyTable(nums);
+  for (let key in freq){
+      if (freq[key] % 2 !== 0){
+          return parseInt(key);
+      }
+  }
+  return false;
+}
+
