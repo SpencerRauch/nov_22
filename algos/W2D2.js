@@ -69,3 +69,58 @@ function reverseWords(str) {
 console.log(reverseWords(strA)) //expectedA: olleh
 console.log(reverseWords(strB)) //expectedB: olleh dlrow
 console.log(reverseWords(strC)) //expectedC: cba fed ihg
+
+
+function stringDedupe(str = "") {
+  let distinctStr = "";
+  const seen = {};
+
+  // loop backwards to include last occurrence
+  for (let i = str.length - 1; i >= 0; --i) {
+      if (!seen[str[i]]) {
+          distinctStr = str[i] + distinctStr;
+          seen[str[i]] = true;
+      }
+  }
+  return distinctStr;
+}
+
+function reverseWordsSplit(wordsStr) {
+  const words = wordsStr.split(" ");
+  let wordsReversed = ""; // "hello world" -> ['hello', "world"]
+
+  for (const word of words) {
+      let reversedWord = "";
+
+      //reverses the word
+      for (let i = word.length - 1; i >= 0; --i) {
+          reversedWord += word[i];
+      }
+
+      // add a space in front of word if it's not the first word
+      if (wordsReversed.length > 0) {
+          reversedWord = " " + reversedWord;
+      }
+      // add reversed word to return string
+      wordsReversed += reversedWord;
+  }
+  return wordsReversed;
+}
+
+
+
+function reverseWords(str) {
+  let reversed = "";
+  let temp = ""
+  for (let char of str){
+      if (char === " "){
+          reversed += temp + " "
+          temp = ""
+      } else {
+          temp = char + temp
+      }
+  }
+  //capture last word
+  reversed += temp;
+  return reversed
+}
