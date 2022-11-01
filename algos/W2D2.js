@@ -124,3 +124,18 @@ function reverseWords(str) {
   reversed += temp;
   return reversed
 }
+
+function stringDedupe(str) {
+  let strX=""
+  let array=[]
+  for(let i = 0; i<str.length; i++){
+      if(array.includes(str[i])){
+          continue
+      }
+      else array.push(str[i])
+  }
+  for(var x = 0; x < array.length; x++){
+      strX += array[x]
+  }
+return strX
+}
