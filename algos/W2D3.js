@@ -62,3 +62,89 @@ function bracesValid(str) {
 console.log(bracesValid(strA)) // expected: true
 console.log(bracesValid(strB)) // expected: false
 console.log(bracesValid(strC)) // expected: false
+
+
+
+
+function parensValid(str) {
+    let unmatchedOpens = 0;
+    for (let char of str) {
+      if (char === "(") unmatchedOpens++
+      if (char === ")") unmatchedOpens--
+      if (unmatchedOpens < 0) return false
+    }
+    return unmatchedOpens == 0;
+  }
+  
+
+  function bracesValid(str) {
+    const stack = [];
+    const isOpen = { "(": true, "{": true, "[": true }
+    const closesToOpens = { ")": "(", "}": "{", "]": "[" };
+  
+    for (let char of str) {
+      if (isOpen[char]) {
+        stack.push(char);
+      } else if (closesToOpens[char]) {
+        if (closesToOpens[char] === stack[stack.length - 1]) {
+          stack.pop();
+        } else {
+          return false;
+        }
+      }
+    }
+    return stack.length === 0;
+  }
+  
+  function bracesValid(str) {
+    var pairs=[]
+    for(var i=0; i<str.length; i++){
+        if(pairs.length==0 && (str[i]==")" || str[i]=="]" || str[i]=="}")){
+            return false
+        } else if(str[i]==")"){
+            if (pairs.pop()!=0){
+                return false
+            }
+        } else if(str[i]=="]"){
+            if (pairs.pop()!=1){
+                return false
+            }
+        } else if(str[i]=="}"){
+            if (pairs.pop()!=2){
+                return false
+            }
+        } else if(str[i]=="("){
+            pairs.push(0)
+        } else if(str[i]=="["){
+            pairs.push(1)
+        } else if(str[i]=="{"){
+            pairs.push(2)
+        }
+    }
+    if(pairs.length==0){
+        return true
+    }
+return false
+}
+
+function parensValid(str) {
+  var pairs=0
+  for (var i=0; i<str.length; i++){
+      if (pairs==0 && str[i]==")"){
+          return false
+      } else if (str[i]=="("){
+          pairs++
+      } else if (str[i]==")"){
+          pairs--
+      }
+
+  }
+  if (pairs>0){
+      return false
+  }
+  return true
+}
+
+console.log(bracesValid(strA)) // expected: true
+console.log(bracesValid(strB)) // expected: false
+console.log(bracesValid(strC)) // expected: false
