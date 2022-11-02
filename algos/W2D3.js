@@ -39,13 +39,13 @@ Braces Valid
 Given a string sequence of parentheses, braces and brackets, determine whether it is valid. 
 */
 
-const strA = "W(a{t}s[o(n{ c}o)m]e )h[e{r}e]!";
+const strA = "W(a{t}s[o(n{ c}o)m]e )h[e{r}e]!";// ( {} [ ({}) ] ) [{}]!
 const expectedA = true;
 
-const strB = "D(i{a}l[ t]o)n{e";
+const strB = "D(i{a}l[ t]o)n{e"; // "({} []) {"
 const expectedB = false;
 
-const strC = "A(1)s[O (n]0{t) 0}k";
+const strC = "A(1)s[O (n]0{t) 0}k"; // () [(] {) }"
 const expectedC = false;
  
 /**
