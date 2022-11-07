@@ -73,3 +73,119 @@ console.log(balanceIndex(numsB)) // -1
 console.log(balanceIndex(numsC)) // 5
 
 
+
+
+function balanceIndex(nums) {
+    if (nums.length < 3) {
+        return -1;
+    }
+  
+    let left = nums[0];
+    let right = 0;
+  
+    for (let i = 2; i < nums.length; i++) {
+        right += nums[i];
+    }
+  
+    for (let i = 1; i < nums.length - 1; i++) {
+        if (left === right) {
+            return i;
+        }
+        right -= nums[i + 1];
+        left += nums[i];
+    }
+    return -1;
+  }
+  
+
+
+
+
+
+
+
+  function balanceIndex(nums) {
+    if(nums.length >= 3){
+        for(var i =1; i< nums.length -1; i++){
+            var suml=0
+            var sumr = 0
+            for(var j = 0; j < i; j++){
+                suml += nums[j]
+            }
+            for(var k = i+1; k < nums.length; k++){
+                sumr += nums[k]
+            }
+            if(suml == sumr){
+                return i
+            }
+        }
+    }
+    return -1
+  }
+  
+  
+  
+  function socialDistancingEnforcer(queue) {
+    var position = [];
+    var flag =true;
+    for (i=0;i<queue.length;i++) {
+        if (queue[i] == 1) {
+            position.push(i)
+        }
+    }
+    for (i=1;i<position.length;i++){
+        if (position[i] - position[i-1] < 6){
+            flag = false
+            return flag
+        }
+    }
+    return flag 
+  }
+  
+  function socialDistancingEnforcer(queue) {
+    var count = 0
+    var people = false
+    if (queue.length === 0){
+        return true
+    }
+    for (var i = 0; i < queue.length; i++) {
+        if (queue[i] === 1 && people === false) {
+            people = true
+            count = 0
+        }
+        else if (queue[i] === 1 && people === true){
+            people = false
+            if (count < 6) {
+                return false
+            } else if (count >= 6){
+                people = true
+            }
+            count = 0
+        }
+        if (people === true) {
+            if(queue[i] === 0){
+                count++
+            }
+        }
+    }
+    return people
+}
+  
+  
+  function socialDistancingEnforcer(queue) {
+    let distance = 0;
+    let firstPersonSeen = false;
+    for (let i = 0; i < queue.length; i++) {
+        if (queue[i] === 0) {
+            distance += 1;
+        } else {
+            if (firstPersonSeen && distance < 6) {
+                return false;
+            }
+            firstPersonSeen = true;
+            distance = 0;
+        }
+    }
+    return true;
+  }
+  
