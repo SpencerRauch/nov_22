@@ -29,7 +29,7 @@ function dedupeSorted(sortedNums) {
 
 console.log(dedupeSorted(nums1)); // [1]
 console.log(dedupeSorted(nums2)); // [1, 2, 3]
-console.log(dedupeSorted(nums3)); // [1, 2, 3, 4]
+console.log(dedupeSorted(nums3)); // [7, 28, 56]
 console.log(dedupeSorted(nums4)); // [1]
 
 /* 
