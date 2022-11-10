@@ -64,10 +64,108 @@ const expected4B = [42, 0, 6];
  * @returns {Array<any>} A new array of interleaved items.
  */
 function interleaveArrays(arr1, arr2) {
-//Your code here
+    let length = arr1.length > arr2.length ? arr1.length : arr2.length
+    let combined = []
+
+    for (let i = 0; i < length; i++){
+        if (arr1[i] != undefined) combined.push(arr1[i])
+        if (arr2[i] != undefined) combined.push(arr2[i])
+    }
+    return combined
+
 }
 
 console.log(interleaveArrays(arrA1, arrB1)); //  [1, "a", 2, "b", 3, "c"];
 console.log(interleaveArrays(arrA2, arrB2)); // [1, 2, 3, 4, 6, 8];
 console.log(interleaveArrays(arrA3, arrB3)); // [1, 2, 3, 4, 5, 7];
 console.log(interleaveArrays(arrA4, arrB4)); // [42, 0, 6];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ function dedupeSorted(sortedNums) {
+    if (sortedNums.length <= 1) {
+        return sortedNums;
+    }
+    const dedupedArr = [];
+
+    for (let i = 0; i < sortedNums.length; i++) {
+        // This only works because it's sorted.
+        if (sortedNums[i] !== dedupedArr[dedupedArr.length - 1]) {
+            dedupedArr.push(sortedNums[i]);
+        }
+    }
+    return dedupedArr;
+}
+
+
+
+
+
+
+
+
+
+function interleaveArrays(arr1, arr2) {
+    let length = arr1.length > arr2.length ? arr1.length : arr2.length
+    //                expression           ?  if true    : if false
+    
+    let combined = []
+
+    for (let i = 0; i < length; i++){
+        if (arr1[i] !== undefined) combined.push(arr1[i])
+        if (arr2[i] !== undefined) combined.push(arr2[i])
+    }
+    return combined
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function dedupeSorted(sortedNums) {
+    var expected = []
+    for (var i = 0; i < sortedNums.length; i++){
+        expected.push(sortedNums[i])
+        var j = i
+        while (expected.includes(sortedNums[j])) {
+            j++
+        }
+        i = j -1 
+    }
+    return expected
+}
+function dedupeSorted(sortedNums) {
+    if(sortedNums.length <= 1){
+        return sortedNums
+    }
+    var arr = [sortedNums[0]]
+    for(var i = 1; i<sortedNums.length; i++){
+        if (sortedNums[i] != sortedNums[i-1]) {
+            arr.push(sortedNums[i])
+        }
+    }
+    return arr
+}
