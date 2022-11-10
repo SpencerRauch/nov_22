@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PokeAPI Fetcher</title>
+</head>
+<body>
+    <form onsubmit="getPoke(event)">
+        <input type="text" name="pokeName" id="pokeName">
+        <button>Fetch!</button>
+    </form>
+    <div id="pokeResult">
+        
+    </div>
+    <button id="getRand" onclick="randPoke(event)">Get Random</button>
+    <script src="script.js"></script>
+</body>
+</html>
