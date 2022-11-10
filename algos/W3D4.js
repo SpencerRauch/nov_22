@@ -122,7 +122,7 @@ console.log(interleaveArrays(arrA4, arrB4)); // [42, 0, 6];
 function interleaveArrays(arr1, arr2) {
     let length = arr1.length > arr2.length ? arr1.length : arr2.length
     //                expression           ?  if true    : if false
-    
+
     let combined = []
 
     for (let i = 0; i < length; i++){
@@ -168,4 +168,51 @@ function dedupeSorted(sortedNums) {
         }
     }
     return arr
+}
+
+
+function interleaveArrays(arr1, arr2) {
+  var len
+  var bigger
+  if(arr1.length > arr2.length){
+      bigger = arr1.length
+      len = arr2.length
+  } else {
+      bigger = arr2.length
+      len = arr1.length
+  }
+  
+  var result = []
+  for(var i = 0; i < len; i++){
+      result.push(arr1.shift())
+      result.push(arr2.shift())
+  }
+
+  for(var x = len; x < bigger; x++){
+      if(arr1.length == 0){
+          result.push(arr2[x-len])
+      } else {
+          result.push(arr1[x-len])
+      }
+  }
+  return result
+}
+//jason's solution
+
+function dedupeSorted(sortedNums) {
+  newarr = [];
+  for(var i = 0; i < sortedNums.length; i++){
+      for(var x = 0; x <= newarr.length; x++){
+          is_present = false;
+          if(newarr[x] == sortedNums[i]){
+              is_present = true
+              break
+          }
+      }
+      if(is_present == false){
+          
+          newarr.push(sortedNums[i])
+      }
+  }
+  return newarr;
 }
