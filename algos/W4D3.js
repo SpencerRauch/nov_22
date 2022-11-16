@@ -34,18 +34,39 @@ const expected6 = 21;
  */
 // Finish early? Try to implement memoization. Feel free to google! 
 
-function fibonacci(num) {
- //Base case(s)
- //Recursive return /call(s)
+function fibonacci(num, memo = { 0: 0, 1: 1 }) {
+  if (memo[num] == undefined) {
+      memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
+  }
+  return memo[num];
+
 }
 
-
-console.log(fibonacci(num1)); // 0
-console.log(fibonacci(num2)); // 1
-console.log(fibonacci(num3)); // 1
-console.log(fibonacci(num4)); // 2
-console.log(fibonacci(num5)); // 3
-console.log(fibonacci(num6)); // 21
+// console.log(fibonacci(num1)); // 0
+// console.log(fibonacci(num2)); // 1
+// console.log(fibonacci(num3)); // 1
+// console.log(fibonacci(num4)); // 2
+// console.log(fibonacci(num5)); // 3
+console.log(fibonacci(42)); // 21
 
 
 /*****************************************************************************/
+
+
+
+
+function fibonacci(num) {
+  //Base case(s)?
+  if (num < 2) {return num }
+  //Recursive return / call
+  return fibonacci(num - 1) + fibonacci(num - 2);
+}
+
+function fibonacci(num, memo = { 0: 0, 1: 1 }) {
+  if (memo[num] == undefined) {
+      memo[num] = fibonacci(num - 1, memo) + fibonacci(num - 2, memo);
+  }
+  return memo[num];
+
+}
+
