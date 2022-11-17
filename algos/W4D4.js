@@ -45,3 +45,56 @@ console.log(binarySearch(nums2, searchNum2)); // true
 console.log(binarySearch(nums3, searchNum3)); // true
 
 
+
+
+
+
+
+
+
+
+
+
+
+function binarySearch(sortedNums, searchNum, left=0, right=sortedNums.length-1) {
+    //Your code here
+    if (left > right) {
+        return false;
+    }
+    const mid = Math.floor((left + right) / 2);
+    if (sortedNums[mid] === searchNum) {
+        return true;
+    }
+    if (sortedNums[mid] > searchNum) {
+        return binarySearch(sortedNums, searchNum, left, mid - 1);
+    }
+    return binarySearch(sortedNums, searchNum, mid + 1, right);
+}
+
+function binarySearch(sortedNums, num) {
+    let mid = Math.floor(sortedNums.length/2)
+    let min = 0
+    let max = sortedNums.length-1
+    let newARR = []
+    if (sortedNums[mid] == num) {
+        return true
+    }
+    if (sortedNums[mid] > num) {
+        max = mid
+    }
+    if (sortedNums[mid] < num) {
+        min = mid
+    }
+    if (max - 1 == min) {
+        if (sortedNums[max] == num || sortedNums[min] == num) {
+            return true
+        }
+        else {
+            return false
+        }
+    }
+    for (var i = min; i <= max; i ++) {
+        newARR.push(sortedNums[i])
+    }
+    return binarySearch(newARR, num)
+}
